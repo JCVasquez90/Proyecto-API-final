@@ -24,17 +24,20 @@ export const categoriesController = {
   },
 
   update: async (c: Context) => {
-    const id = Number(c.req.param('id'));
-    const body = await c.req.json();
-    const parsed = updateCategorySchema.safeParse(body);
-    if (!parsed.success) return c.json({ errors: parsed.error.issues }, 400);
-    try {
-      const updated = await categoriesRepository.update(id, parsed.data);
-      return c.json(updated, 200);
-    } catch (error) {
-      return c.json({ message: 'Categoría no encontrada' }, 404);
-    }
-  },
+  const id = Number(c.req.param('id'));
+  const body = await c.req.json();
+  const parsed = updateCategorySchema.safeParse(body);
+  if (!parsed.success) return c.json({ errors: parsed.error.issues }, 400);
+
+  try {
+    const updated = await categoriesRepository.update(id, {
+      name: parsed.data.name,
+    });
+    return c.json(updated, 200);
+  } catch (error) {
+    return c.json({ message: 'Categoría no encontrada' }, 404);
+  }
+},
 
   remove: async (c: Context) => {
     const id = Number(c.req.param('id'));
