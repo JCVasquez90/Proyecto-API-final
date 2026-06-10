@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: cashi_user
+      POSTGRES_PASSWORD: cashi_pass
+      POSTGRES_DB: cashi_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
