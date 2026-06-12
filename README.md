@@ -130,7 +130,9 @@ Nota: Todos los endpoints que requieren autenticación esperan el header `Author
 
 ## URL de producción
 
-Producción (cuando esté desplegado): https://cashi-api.onrender.com
+Producción (cuando esté desplegado): https://proyecto-api-final.onrender.com
+
+Nota sobre Render free tier: el servicio se suspende tras 15 minutos de inactividad. El primer request puede tardar 30-50 segundos en responder.
 
 ## Ejemplos de uso con Bruno
 
